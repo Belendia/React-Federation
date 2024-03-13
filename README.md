@@ -4,22 +4,25 @@
 
 ### create the project
 
-`pnpx create-mf-app`
+`pnpm create vite remote --template react`
 
-### set the following for the project
+# install a plugin for a federation
 
-Pick the name of your app: home<br>
-? Project Type: Application<br>
-? Port number: 3000<br>
-? Framework: react<br>
-? Language: javascript<br>
-? CSS: Tailwind<br>
-? Packer: Webpack<br>
+`cd remote`
+`pnpm add @originjs/vite-plugin-federation -D`
+
+# set fixed port to the remote
+
+When the host begins, it should consistently refer to the remote using a fixed port. Thus, update the scripts in package.json with the provided code below.
+
+`"dev": "vite --port 5001 --staticPort"`
+`"preview": "vite preview --port 5001 --staticPort"`
+`"serve": "vite preview --port 5001 --staticPort"`
 
 ### install all the necessary packages
 
 `pnpm install`
 
-### start the home app
+### start the remote app
 
-`pnpm start`
+`pnpm run dev`
